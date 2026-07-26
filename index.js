@@ -2,20 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-// const { Pool } = require('pg');
 const authRoutes = require('./routes/auth');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = process.env.PORT || 5000;
-
-
-
-
-
-// // Database connection pool
-// const pool = new Pool({
-//     connectionString: process.env.DATABASE_URL,
-// });
+const projectRoutes = require('./routes/projects');
 
 
 // Make pool available to routes via req.db (middleware)
@@ -31,6 +22,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser()); 
 app.use('/api', authRoutes); 
+app.use('/api/projects', projectRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
