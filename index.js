@@ -7,6 +7,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const port = process.env.PORT || 5000;
 const projectRoutes = require('./routes/projects');
+const listRoutes = require('./routes/lists');
+const taskRoutes = require('./routes/tasks');
+
+
 
 
 // Make pool available to routes via req.db (middleware)
@@ -23,6 +27,8 @@ app.use(express.json());
 app.use(cookieParser()); 
 app.use('/api', authRoutes); 
 app.use('/api/projects', projectRoutes);
+app.use('/api/projects/:projectId/lists', listRoutes);
+app.use('/api/lists/:listId/tasks', taskRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
