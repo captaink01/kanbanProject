@@ -21,7 +21,10 @@ app.use((req, res, next) => {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Match your React/Vite URL
+  credentials: true, // Required for HTTP-only cookies / refresh tokens
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser()); 
