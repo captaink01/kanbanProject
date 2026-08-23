@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://kanbanproject-1irs.onrender.com',
     withCredentials: true,
 });
 
