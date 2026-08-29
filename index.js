@@ -20,16 +20,11 @@ app.use((req, res, next) => {
     next();
 });
 
-// Middleware
-const allowedOrigins = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    process.env.FRONTEND_URL, // e.g. https://your-app.vercel.app — set this in Render's dashboard
-].filter(Boolean);
+
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
+  origin: 'https://kanbanprojectapp.onrender.com',
+  credentials: true
 }));
 app.use(morgan('dev'));
 app.use(express.json());
